@@ -1,0 +1,7 @@
+fastapi>=0.111.0
+uvicorn[gunicorn]==0.20.0
+confluent-kafka==2.2.0
+pydantic==2.6.2
+python-dotenv==1.0.1
+faker==19.4.0
+

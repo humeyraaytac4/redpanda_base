@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  redpanda:
+    image: docker.redpanda.com/vectorized/redpanda:v22.2.2
+    command:
+      - redpanda start
+      - --smp 1
+      - --overprovisioned
+      - --node-id 0
+      - --kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://redpanda:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://redpanda:9392
+      - --pandaproxy-addr redpanda:8082
+      - --advertise-pandaproxy-addr localhost:8082
+    expose:
+      - "8081"
+      - "8082"
+      - "29092"
+      - "9644"
+    ports:
+      - "9092:9092"
+    networks:
+      - project
+
+  console:
+    image: docker.redpanda.com/vectorized/console:latest
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["redpanda:29092"]
+          schemaRegistry:
+            enabled: true
+            urls: ["http://redpanda:8081"]
+        redpanda:
+          adminApi:
+            enabled: true
+            urls: ["http://redpanda:9644"]
+        connect:
+          enabled: true
+          clusters:
+            - name: local-connect-cluster
+              url: http://connect:8083
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redpanda
+    networks:
+      - project
+  
+  app:
+    build: .
+    container_name: topic_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redpanda
+    networks:
+      - project
+    environment:
+      - KAFKA_HOST=redpanda:29092  
+      - KAFKA_API_HOST=redpanda:9092 
+
+networks:
+  project:
+    name: redpanda
+
+
