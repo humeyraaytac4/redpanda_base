@@ -4,6 +4,9 @@ FROM python:3.9-slim
 # Set the working directory inside the container
 WORKDIR /app
 
+# Data dizinini oluşturun ve gerekli izinleri verin
+RUN mkdir -p /var/lib/clickhouse/data && chmod -R 777 /var/lib/clickhouse/data
+
 # Copy the requirements.txt file into the container
 COPY requirements.txt /app/
 
