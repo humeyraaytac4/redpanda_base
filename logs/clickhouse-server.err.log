@@ -6908,3 +6908,228 @@ Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
 20. ? @ 0x00007f201223c353
 
 Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:27.497985 [ 687 ] {} <Error> void DB::SystemLog<DB::AsynchronousMetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::AsynchronousMetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/tmp_insert_202501_134_134_0/"] ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/202501_134_134_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::AsynchronousMetricLogElement>::savingThreadFunction() @ 0x000000001104f30c
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000cccfe94
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:32.194149 [ 694 ] {} <Error> void DB::SystemLog<DB::MetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::MetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/tmp_insert_202501_125_125_0/"] ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/202501_125_125_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::MetricLogElement>::savingThreadFunction() @ 0x000000001105dfec
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000ccd0554
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:34.548742 [ 687 ] {} <Error> void DB::SystemLog<DB::AsynchronousMetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::AsynchronousMetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/tmp_insert_202501_135_135_0/"] ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/202501_135_135_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::AsynchronousMetricLogElement>::savingThreadFunction() @ 0x000000001104f30c
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000cccfe94
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:39.793755 [ 694 ] {} <Error> void DB::SystemLog<DB::MetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::MetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/tmp_insert_202501_126_126_0/"] ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/202501_126_126_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::MetricLogElement>::savingThreadFunction() @ 0x000000001105dfec
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000ccd0554
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:41.588817 [ 687 ] {} <Error> void DB::SystemLog<DB::AsynchronousMetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::AsynchronousMetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/tmp_insert_202501_136_136_0/"] ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/202501_136_136_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::AsynchronousMetricLogElement>::savingThreadFunction() @ 0x000000001104f30c
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000cccfe94
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:47.394827 [ 694 ] {} <Error> void DB::SystemLog<DB::MetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::MetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/tmp_insert_202501_127_127_0/"] ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/202501_127_127_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::MetricLogElement>::savingThreadFunction() @ 0x000000001105dfec
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000ccd0554
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:48.634874 [ 687 ] {} <Error> void DB::SystemLog<DB::AsynchronousMetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::AsynchronousMetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/tmp_insert_202501_137_137_0/"] ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/202501_137_137_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::AsynchronousMetricLogElement>::savingThreadFunction() @ 0x000000001104f30c
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000cccfe94
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:54.984610 [ 694 ] {} <Error> void DB::SystemLog<DB::MetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::MetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/tmp_insert_202501_128_128_0/"] ["/var/lib/clickhouse/store/369/3691b675-9810-4542-abf7-a0f3586c0257/202501_128_128_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::MetricLogElement>::savingThreadFunction() @ 0x000000001105dfec
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::MetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000ccd0554
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
+2025.01.05 00:20:55.689051 [ 687 ] {} <Error> void DB::SystemLog<DB::AsynchronousMetricLogElement>::flushImpl(const std::vector<LogElement> &, uint64_t) [LogElement = DB::AsynchronousMetricLogElement]: std::exception. Code: 1001, type: std::__1::__fs::filesystem::filesystem_error, e.what() = filesystem error: in rename: Permission denied ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/tmp_insert_202501_138_138_0/"] ["/var/lib/clickhouse/store/a87/a87f7e66-6a75-4b65-b27b-8ef59263e9e0/202501_138_138_0/"], Stack trace (when copying this message, always include the lines below):
+
+0. std::system_error::system_error(std::error_code, String const&) @ 0x000000001710f435
+1. std::__fs::filesystem::filesystem_error::filesystem_error[abi:v15000](String const&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code) @ 0x00000000170c63c4
+2. void std::__fs::filesystem::__throw_filesystem_error[abi:v15000]<String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&>(String&, std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code const&) @ 0x00000000170c619d
+3. std::__fs::filesystem::detail::(anonymous namespace)::ErrorHandler<void>::report(std::error_code const&) const (.llvm.1044553589876245905) @ 0x00000000170c8410
+4. std::__fs::filesystem::__rename(std::__fs::filesystem::path const&, std::__fs::filesystem::path const&, std::error_code*) @ 0x00000000170cc67d
+5. DB::DiskLocal::moveDirectory(String const&, String const&) @ 0x000000001033d889
+6. DB::DataPartStorageOnDiskBase::rename(String, String, std::shared_ptr<Poco::Logger>, bool, bool) @ 0x0000000011ca3254
+7. DB::IMergeTreeDataPart::renameTo(String const&, bool) @ 0x0000000011cd7bc1
+8. DB::MergeTreeData::renameTempPartAndReplaceImpl(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&, std::vector<std::shared_ptr<DB::IMergeTreeDataPart const>, std::allocator<std::shared_ptr<DB::IMergeTreeDataPart const>>>*) @ 0x0000000011da14db
+9. DB::MergeTreeData::renameTempPartAndAdd(std::shared_ptr<DB::IMergeTreeDataPart>&, DB::MergeTreeData::Transaction&, DB::DataPartsLock&) @ 0x0000000011da2ee5
+10. DB::MergeTreeSink::finishDelayedChunk() @ 0x00000000121584ac
+11. DB::runStep(std::function<void ()>, DB::ThreadStatus*, std::atomic<unsigned long>*) @ 0x000000001266371c
+12. DB::ExceptionKeepingTransform::work() @ 0x0000000012662ecc
+13. DB::ExecutionThreadContext::executeTask() @ 0x00000000123f3f1a
+14. DB::PipelineExecutor::executeStepImpl(unsigned long, std::atomic<bool>*) @ 0x00000000123e8470
+15. DB::PipelineExecutor::executeStep(std::atomic<bool>*) @ 0x00000000123e7e88
+16. DB::SystemLog<DB::AsynchronousMetricLogElement>::savingThreadFunction() @ 0x000000001104f30c
+17. void std::__function::__policy_invoker<void ()>::__call_impl<std::__function::__default_alloc_func<ThreadFromGlobalPoolImpl<true>::ThreadFromGlobalPoolImpl<DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()>(DB::SystemLogBase<DB::AsynchronousMetricLogElement>::startup()::'lambda'()&&)::'lambda'(), void ()>>(std::__function::__policy_storage const*) @ 0x000000000cccfe94
+18. void* std::__thread_proxy[abi:v15000]<std::tuple<std::unique_ptr<std::__thread_struct, std::default_delete<std::__thread_struct>>, void ThreadPoolImpl<std::thread>::scheduleImpl<void>(std::function<void ()>, Priority, std::optional<unsigned long>, bool)::'lambda0'()>>(void*) @ 0x000000000cc8a74d
+19. ? @ 0x00007f2012317609
+20. ? @ 0x00007f201223c353
+
+Cannot print extra info for Poco::Exception (version 24.3.6.48 (official build))
