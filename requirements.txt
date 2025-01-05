@@ -8,3 +8,5 @@ elasticsearch>=7.16.0,<8.0.0
 clickhouse-driver==0.2.2
 requests==2.31.0
 httpx
+pandas>=2.0.0
+kafka-python==2.0.2
